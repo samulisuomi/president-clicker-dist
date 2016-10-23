@@ -10,10 +10,11 @@
     <link rel="manifest" href="/manifest.json">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.css" rel="stylesheet">
     <style>
-.flex-container,.row,body,html{width:100%;margin:0}body,html{height:100%;padding:0;text-align:center;color:#fff;font-family:Montserrat,sans-serif;font-size:16px;text-shadow:2px 2px #000}@media only screen and (max-width:768px){body{font-size:13px}}html{background:url(/images/bg.jpg) center center no-repeat fixed;background-size:cover}h1{font-size:400%;font-weight:900;text-transform:uppercase;text-shadow:6px 6px #000}p{font-size:100%;line-height:1.2}.scoreText,.scoreTextWorld{overflow-wrap:break-word;font-size:300%}header{font-weight:400;padding:0 18px}.flex-container{min-height:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-ms-flex-pack:distribute;justify-content:space-around;-ms-flex-align:center;align-items:center}.row{max-width:960px;padding:0;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-align:center;align-items:center}.rowItem{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-ms-flex-pack:center;justify-content:center;width:50%;padding:9px 18px}.scoreTextWorld{text-shadow:2px 2px #fff}.scoreText{text-shadow:2px 2px #000;-ms-flex-item-align:center;-ms-grid-row-align:center;align-self:center}#trumpScoreWorld{color:red}#hillaryScoreWorld{color:#1c3782}#problem{display:none;padding-bottom:18px}.faces,img{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}img{max-height:400px;max-width:100%;-webkit-user-drag:none;-moz-user-drag:none;-ms-user-drag:none;-o-user-drag:none;user-drag:none}footer{padding-bottom:0}
+.flex-container,.row,body,html{width:100%;margin:0}.modal,body,html{text-align:center}body,html{height:100%;padding:0;color:#fff;font-family:Montserrat,sans-serif;font-size:16px;text-shadow:2px 2px #000}@media only screen and (max-width:768px){body{font-size:13px}}html{background:url(/images/bg.jpg) center center no-repeat fixed;background-size:cover}h1{font-size:400%;font-weight:900;text-transform:uppercase;text-shadow:6px 6px #000}h2{font-size:150%;font-weight:700;text-shadow:4px 4px #000}p{font-size:100%;line-height:1.2}.scoreText,.scoreTextWorld{overflow-wrap:break-word;font-size:300%}header{font-weight:400;padding:0 18px}.flex-container{min-height:100%;display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-ms-flex-pack:distribute;justify-content:space-around;-ms-flex-align:center;align-items:center}.row{max-width:960px;padding:0;display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-ms-flex-pack:justify;justify-content:space-between;-ms-flex-align:center;align-items:center}.rowItem{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap;-ms-flex-pack:center;justify-content:center;width:50%;padding:7px 18px}#problem,.modal a.close-modal{display:none}#problem,footer{padding-bottom:18px}.scoreTextWorld{text-shadow:2px 2px #fff}.scoreText{text-shadow:2px 2px #000;-ms-flex-item-align:center;-ms-grid-row-align:center;align-self:center}#trumpScoreWorld{color:red}#hillaryScoreWorld{color:#1c3782}.faces,img{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}img{max-height:400px;max-width:100%;-webkit-user-drag:none;-moz-user-drag:none;-ms-user-drag:none;-o-user-drag:none;user-drag:none}a{color:#fff;transition:color .25s}.modal h2,a:hover{color:#c1c1c1}.modal{background-color:#1b2c40}.modal h2:first-child{padding-top:0}.modal h2{padding-top:6px}.modal footer{padding-top:18px}
 </style>
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#141a21">
 </head>
 
 <body>
@@ -23,7 +24,7 @@
         </header>
         <div id="problem">
             <img src="images/frown.png"><br>
-            <span>Unfortunately there's some problem with the server connection.</span>
+            <span id="problemText"></span>
         </div>
         <div id="scoreWorld" class="row">
             <div class="rowItem">
@@ -50,16 +51,31 @@
             </div>
         </div>
         <footer>
-            <p>About</p>
+            <p><a id="openAbout" href="#about">About</a></p>
         </footer>
-        <ins class="adsbygoogle" style="display:inline-block;width:320px;height:100px" data-ad-client="ca-pub-7841471730070533" data-ad-slot="7883156205"></ins>
+        <!-- <ins class="adsbygoogle" style="display:inline-block;width:320px;height:100px" data-ad-client="ca-pub-7841471730070533" data-ad-slot="7883156205"></ins> -->
+    </div>
+    <div id="about" style="display: none;">
+        <h2>What?</h2>
+        <p>Click the faces!</p>
+        <h2>Why?</h2>
+        <p>Why not?</p>
+        <h2>How?</h2>
+        <p>Put your cursor or finger over a face and then tap tap tap.</p>
+        <p>Everyone's total taps are at the top, your's are at the bottom.</p>
+        <p>If you tap too much, maybe something breaks. We're not responsible.</p>
+        <h2>Who did this?</h2>
+        <p>Things: <a href="https://twitter.com/suomisamuli" target="_blank">@suomisamuli</a></p>
+        <p>Original idea: <a href="https://twitter.com/m_vahis" target="_blank">@m_vahis</a></p>
+        <footer><a id="closeAbout" href="javascript:void(0)">Close</a></footer>
     </div>
     <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/big.js/3.1.3/big.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
-$(function(){function t(t,o){"undefined"!=typeof Storage&&localStorage.setItem(t,o)}var o,e={path:"/presidentclicker/socket.io",transports:["websocket"]};o=window.location.host.indexOf("localhost")===-1?io("http://37.139.14.210",e):io("localhost:3000",e);var n=$("#trump"),l=$("#hillary"),i=$("#trumpScoreWorld"),r=$("#hillaryScoreWorld"),c=null,u=null,a=$("#trumpScore"),d=$("#hillaryScore"),x=null,g=null;"undefined"!=typeof Storage?localStorage.h&&localStorage.t?(x=new Big(localStorage.t),g=new Big(localStorage.h)):(x=new Big(0),g=new Big(0)):(console.log("localStorage not supported :{"),x=new Big(0),g=new Big(0)),a.text(x.toFixed()),d.text(g.toFixed()),o.on("connect",function(t){$("#problem").hide()}),o.io.on("connect_error",function(t){c=null,u=null,$("#problem").show()}),n.click(function(){return o.emit("t","1"),x=x.plus(1),t("t",x.toFixed()),a.text(x.toFixed()),null!==c&&(c=c.plus(1),i.text(c.toFixed())),!1}),l.click(function(){return o.emit("h","1"),g=g.plus(1),t("h",g.toFixed()),d.text(g.toFixed()),null!==u&&(u=u.plus(1),r.text(u.toFixed())),!1}),o.on("s.t",function(t){c=new Big(t),i.text(c.toFixed())}),o.on("s.h",function(t){u=new Big(t),r.text(u.toFixed())}),$("body").on("contextmenu","img",function(t){return!1})});
+$(function(){function o(o,t){"undefined"!=typeof Storage&&localStorage.setItem(o,t)}var t,e={path:"/presidentclicker/socket.io",transports:["websocket"]};t=window.location.host.indexOf("localhost")===-1?io("http://37.139.14.210",e):io("localhost:3000",e);var n=$("#trump"),l=$("#hillary"),i=$("#trumpScoreWorld"),r=$("#hillaryScoreWorld"),c=null,a=null,u=$("#trumpScore"),s=$("#hillaryScore"),p=null,d=null,g=$("#openAbout"),x=$("#closeAbout"),h=$("#about");"undefined"!=typeof Storage?localStorage.h&&localStorage.t?(p=new Big(localStorage.t),d=new Big(localStorage.h)):(p=new Big(0),d=new Big(0)):(console.log("localStorage not supported :{"),p=new Big(0),d=new Big(0)),u.text(p.toFixed()),s.text(d.toFixed()),t.on("connect",function(o){$("#problem").hide()}),t.io.on("connect_error",function(o){c=null,a=null,$("#problemText").html("Unfortunately there's some problem with the server connection."),$("#problem").show()}),n.click(function(e){return t.emit("t","1"),p=p.plus(1),o("t",p.toFixed()),u.text(p.toFixed()),null!==c&&(c=c.plus(1),i.text(c.toFixed())),e.stopPropagation(),!1}),l.click(function(e){return t.emit("h","1"),d=d.plus(1),o("h",d.toFixed()),s.text(d.toFixed()),null!==a&&(a=a.plus(1),r.text(a.toFixed())),e.stopPropagation(),!1}),t.on("s.t",function(o){c=new Big(o),i.text(c.toFixed())}),t.on("s.h",function(o){a=new Big(o),r.text(a.toFixed())}),$("body").on("contextmenu","img",function(o){return!1}),g.click(function(o){return h.modal({fadeDuration:100}),o.stopPropagation(),!1}),x.click(function(o){return $.modal.close(),h.css("display","none"),window.location.href,o.stopPropagation(),!1})});
 </script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
