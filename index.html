@@ -53,7 +53,7 @@
         <footer>
             <p><a id="openAbout" href="#about">About</a></p>
         </footer>
-        <!-- <ins class="adsbygoogle" style="display:inline-block;width:320px;height:100px" data-ad-client="ca-pub-7841471730070533" data-ad-slot="7883156205"></ins> -->
+        <ins class="adsbygoogle" style="display:inline-block;width:320px;height:100px" data-ad-client="ca-pub-7841471730070533" data-ad-slot="7883156205"></ins>
     </div>
     <div id="about" style="display: none;">
         <h2>What?</h2>
@@ -73,6 +73,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/big.js/3.1.3/big.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.8.0/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-86205916-1', 'auto');
+        ga('send', 'pageview');
+    </script>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
 $(function(){function o(o,t){"undefined"!=typeof Storage&&localStorage.setItem(o,t)}var t,e={path:"/presidentclicker/socket.io",transports:["websocket"]};t=window.location.host.indexOf("localhost")===-1?io("http://37.139.14.210",e):io("localhost:3000",e);var n=$("#trump"),l=$("#hillary"),i=$("#trumpScoreWorld"),r=$("#hillaryScoreWorld"),c=null,a=null,u=$("#trumpScore"),s=$("#hillaryScore"),p=null,d=null,g=$("#openAbout"),x=$("#closeAbout"),h=$("#about");"undefined"!=typeof Storage?localStorage.h&&localStorage.t?(p=new Big(localStorage.t),d=new Big(localStorage.h)):(p=new Big(0),d=new Big(0)):(console.log("localStorage not supported :{"),p=new Big(0),d=new Big(0)),u.text(p.toFixed()),s.text(d.toFixed()),t.on("connect",function(o){$("#problem").hide()}),t.io.on("connect_error",function(o){c=null,a=null,$("#problemText").html("Unfortunately there's some problem with the server connection."),$("#problem").show()}),n.click(function(e){return t.emit("t","1"),p=p.plus(1),o("t",p.toFixed()),u.text(p.toFixed()),null!==c&&(c=c.plus(1),i.text(c.toFixed())),e.stopPropagation(),!1}),l.click(function(e){return t.emit("h","1"),d=d.plus(1),o("h",d.toFixed()),s.text(d.toFixed()),null!==a&&(a=a.plus(1),r.text(a.toFixed())),e.stopPropagation(),!1}),t.on("s.t",function(o){c=new Big(o),i.text(c.toFixed())}),t.on("s.h",function(o){a=new Big(o),r.text(a.toFixed())}),$("body").on("contextmenu","img",function(o){return!1}),g.click(function(o){return h.modal({fadeDuration:100}),o.stopPropagation(),!1}),x.click(function(o){return $.modal.close(),h.css("display","none"),window.location.href,o.stopPropagation(),!1})});
