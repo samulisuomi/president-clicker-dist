@@ -7,7 +7,7 @@
     <meta property="og:url" content="http://presidentclicker.com">
     <meta property="og:title" content="President Clicker">
     <meta property="og:description" content="Click the faces!">
-    <meta property="og:image" content="http://presidentclicker.com/images/bg.jpg">
+    <meta property="og:image" content="http://presidentclicker.com/images/ogimage.jpg">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
@@ -104,7 +104,7 @@
 $(function(){function o(o,t){"undefined"!=typeof Storage&&localStorage.setItem(o,t)}var t,e={path:"/presidentclicker/socket.io",transports:["websocket"]};t=window.location.host.indexOf("localhost")===-1?io("http://37.139.14.210",e):io("localhost:3000",e);var n=$("#trump"),l=$("#hillary"),i=$("#trumpScoreWorld"),r=$("#hillaryScoreWorld"),c=null,a=null,u=$("#trumpScore"),s=$("#hillaryScore"),p=null,d=null,g=$("#openAbout"),x=$("#closeAbout"),h=$("#about");"undefined"!=typeof Storage?localStorage.h&&localStorage.t?(p=new Big(localStorage.t),d=new Big(localStorage.h)):(p=new Big(0),d=new Big(0)):(console.log("localStorage not supported :{"),p=new Big(0),d=new Big(0)),u.text(p.toFixed()),s.text(d.toFixed()),t.on("connect",function(o){$("#problem").hide()}),t.io.on("connect_error",function(o){c=null,a=null,$("#problemText").html("Unfortunately there's some problem with the server connection."),$("#problem").show()}),n.click(function(e){return t.emit("t","1"),p=p.plus(1),o("t",p.toFixed()),u.text(p.toFixed()),null!==c&&(c=c.plus(1),i.text(c.toFixed())),e.stopPropagation(),!1}),l.click(function(e){return t.emit("h","1"),d=d.plus(1),o("h",d.toFixed()),s.text(d.toFixed()),null!==a&&(a=a.plus(1),r.text(a.toFixed())),e.stopPropagation(),!1}),t.on("s.t",function(o){c=new Big(o),i.text(c.toFixed())}),t.on("s.h",function(o){a=new Big(o),r.text(a.toFixed())}),$("body").on("contextmenu","img",function(o){return!1}),g.click(function(o){return h.modal({fadeDuration:100}),o.stopPropagation(),!1}),x.click(function(o){return $.modal.close(),h.css("display","none"),window.location.href,o.stopPropagation(),!1})});
 </script>
     <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        // (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
 </body>
 
